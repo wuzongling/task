@@ -16,8 +16,8 @@ public class Test {
         TreadTaskTest treadTaskTest2 = new TreadTaskTest();
         TreadTaskTest treadTaskTest3 = new TreadTaskTest();
         list.add(treadTaskTest1);
-//        list.add(treadTaskTest2);
-//        list.add(treadTaskTest3);
+        list.add(treadTaskTest2);
+        list.add(treadTaskTest3);
         TreadTaskFactory.buildTaskGroup(list,null,false).start();
     }
 

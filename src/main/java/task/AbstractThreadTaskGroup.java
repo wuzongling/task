@@ -109,13 +109,12 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
     }
 
     public ThreadPoolExecutor getThreadPoolExecutor(){
-        /*if(threadPoolExecutor == null){
+        if(threadPoolExecutor == null){
             return new ThreadPoolExecutor(8, 8,
                     0L, TimeUnit.MILLISECONDS,
                     new LinkedBlockingQueue<Runnable>());
         }
-        return threadPoolExecutor;*/
-        return (ThreadPoolExecutor) Executors.newCachedThreadPool();
+        return threadPoolExecutor;
     }
 
     public void run() {

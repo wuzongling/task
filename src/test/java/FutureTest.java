@@ -25,22 +25,18 @@ public class FutureTest {
         ExecutorService executor = Executors.newCachedThreadPool();
         executor.execute(future);
 
-        try {
+       /* try {
             Thread.sleep(1000);
         } catch (InterruptedException e1) {
             e1.printStackTrace();
-        }
+        }*/
         // 可以取消异步任务
         // future.cancel(true);
 
         try {
-            try {
-                 Object a = future.get(1,TimeUnit.HOURS);
-                // 阻塞，等待异步任务执行完毕-获取异步任务的返回值
-                System.out.println("future.get():" +a );
-            } catch (TimeoutException e) {
-                e.printStackTrace();
-            }
+            Object a = future.get();
+            // 阻塞，等待异步任务执行完毕-获取异步任务的返回值
+            System.out.println("future.get():" +a );
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
