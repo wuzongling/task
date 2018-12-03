@@ -1,0 +1,38 @@
+2018-12-02 17:24:31 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:44) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-02 17:25:59 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:44) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-02 17:28:47 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:44) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-02 17:34:47 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:44) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-02 17:41:58 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:44) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-02 17:41:58 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:44) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-02 17:41:58 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:44) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-02 17:53:54 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:44) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-02 17:57:54 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:44) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-02 17:58:32 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:44) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-02 18:02:17 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:44) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-02 18:02:40 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:44) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-02 18:07:54 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:44) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-02 18:09:42 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:44) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-02 23:55:35 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:44) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-02 23:56:12 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:44) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-02 23:58:42 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:44) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-02 23:58:48 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:44) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-02 23:58:48 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:44) ]
+INFO:main_AbstractThreadTask开始执行 params:null

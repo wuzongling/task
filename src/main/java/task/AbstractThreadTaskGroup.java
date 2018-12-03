@@ -54,11 +54,12 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
         threadPoolExecutor = getThreadPoolExecutor();
         ArrayList result = new ArrayList();
         for(AbstractThreadTask task : taskList){
-            threadPoolExecutor.execute(task);
+            threadPoolExecutor.execute(task.getFutureTask());
             Object param = task.getResult();
             result.add(param);
         }
         collectCalculate(result);
+        threadPoolExecutor.shutdown();
         return null;
     }
 

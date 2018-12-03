@@ -86,7 +86,7 @@ public abstract class AbstractThreadTask implements ITask,Runnable{
     }
 
     public void run() {
-        /*try {
+        try {
             preHandle(params);
             result = excute(params);
             postHandle(result,params);
@@ -95,10 +95,18 @@ public abstract class AbstractThreadTask implements ITask,Runnable{
             log.error(name+"发生异常,params:"+params,e);
             status = TaskStatus.EXCEPTIONAL;
             errorHandle(e,params);
-        }*/
+        }
     }
 
     public void setParams(List params) {
         this.params = params;
+    }
+
+    public FutureTask getFutureTask() {
+        return futureTask;
+    }
+
+    public void setFutureTask(FutureTask futureTask) {
+        this.futureTask = futureTask;
     }
 }

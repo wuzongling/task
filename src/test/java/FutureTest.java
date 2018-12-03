@@ -10,7 +10,7 @@ public class FutureTest {
         Task task = new Task();// 新建异步任务
         FutureTask<Integer> future = new FutureTask<Integer>(task) {
             // 异步任务执行完成，回调
-            @Override
+       /*     @Override
             protected void done() {
                 try {
                     System.out.println("future.done():" + get());
@@ -19,7 +19,7 @@ public class FutureTest {
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 }
-            }
+            }*/
         };
         // 创建线程池（使用了预定义的配置）
         ExecutorService executor = Executors.newCachedThreadPool();
