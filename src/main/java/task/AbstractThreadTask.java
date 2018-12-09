@@ -8,29 +8,41 @@ import util.ParamsUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
 /**
+ * 线程任务基类
  * @Auther: zonglin_wu
  * @Date: 2018/12/1 16:22
  * @Description:
  */
-public abstract class AbstractThreadTask implements ITask,Runnable{
+public abstract class AbstractThreadTask implements ITask,Callable{
     private static final Logger log = LoggerFactory.getLogger(AbstractThreadTask.class);
 
+    private boolean synResult = false;
 
     private List params;
 
-    private FutureTask futureTask = new FutureTask(this,0);;
+    private FutureTask futureTask = new FutureTask(this);
 
     private Object result;
 
     private String name = getName();
 
-    private int status = TaskStatus.NEW;
+    volatile int status = TaskStatus.NEW;
+
+    private boolean isErrorCall = true;
 
     public AbstractThreadTask(List params){
         this.params = params;
+    }
+
+    public AbstractThreadTask(List params,boolean synResult){
+        this.params = params;
+        this.synResult = synResult;
     }
 
     public AbstractThreadTask(){
@@ -51,21 +63,25 @@ public abstract class AbstractThreadTask implements ITask,Runnable{
         return result;
     }
 
-    public Object getResult()throws Exception {
+    public Object getResult(){
         try {
-            futureTask.get();
+            if(!synResult){
+                result = futureTask.get();
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
         return result;
     }
 
-    public Integer getStatus()throws Exception {
+    public Integer getStatus() {
         return status;
     }
 
     public void errorHandle(Exception e, List params){
-        cancelHandle(params);
+           if(isErrorCall){
+               errorCall(e,params);
+           }
     }
 
     public void suspend(long millisecond)throws Exception {
@@ -75,17 +91,16 @@ public abstract class AbstractThreadTask implements ITask,Runnable{
     public void cancel(boolean flag){
         status = TaskStatus.CANCELLED;
         futureTask.cancel(flag);
-        cancelHandle(params);
     }
 
-    public abstract void cancelHandle(List params);
+    public abstract void errorCall(Exception e,List params);
 
     public void start(){
         status = TaskStatus.COMPLETING;
-        new Thread(this).start();
+        new Thread(futureTask).start();
     }
 
-    public void run() {
+    public Object call() {
         try {
             preHandle(params);
             result = excute(params);
@@ -96,6 +111,7 @@ public abstract class AbstractThreadTask implements ITask,Runnable{
             status = TaskStatus.EXCEPTIONAL;
             errorHandle(e,params);
         }
+        return result;
     }
 
     public void setParams(List params) {
@@ -106,7 +122,7 @@ public abstract class AbstractThreadTask implements ITask,Runnable{
         return futureTask;
     }
 
-    public void setFutureTask(FutureTask futureTask) {
-        this.futureTask = futureTask;
+    public void setErrorCall(boolean errorCall) {
+        isErrorCall = errorCall;
     }
 }

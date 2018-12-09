@@ -1,6 +1,6 @@
 package interf;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Auther: zonglin_wu
@@ -13,5 +13,5 @@ public interface ITaskGroup extends ITask{
 
     public boolean removeTask(int i);
 
-    public Object collectCalculate(ArrayList params);
+    public Object collectCalculate(List params);
 }

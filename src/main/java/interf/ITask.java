@@ -39,16 +39,15 @@ public interface ITask {
 
     /**
      * 获取任务结果
-     * @param result
      * @return
      */
-    public Object getResult()throws Exception;
+    public Object getResult();
 
     /**
      * 获取任务状态
      * @return
      */
-    public Integer getStatus()throws Exception;
+    public Integer getStatus();
 
     /**
      * 错误处理器

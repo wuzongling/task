@@ -2,6 +2,7 @@ import task.AbstractThreadTask;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @Auther: zonglin_wu
@@ -11,20 +12,20 @@ import java.util.List;
 public class TreadTaskTest extends AbstractThreadTask{
 
     public Object postHandle(Object result, List params) throws Exception {
-        System.out.println("任务执行后");
+        System.out.println(getName()+":任务执行后");
         return null;
     }
 
-    public void errorHandle(Exception e, List params) {
-        System.out.println("任务执行错误");
+    @Override
+    public void errorCall(Exception e, List params) {
+        System.out.println(getName()+":任务执行错误回滚");
     }
 
     public Object excute(List params) throws Exception {
-        System.out.println("任务执行");
-        return null;
+        System.out.println(getName()+":任务执行");
+        int r = new Random().nextInt();
+        System.out.println(r);
+        return r;
     }
 
-    public void cancelHandle(List params) {
-        System.out.println("任务关闭");
-    }
 }

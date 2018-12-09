@@ -2,10 +2,11 @@ package listener.threadTask;
 
 import constant.ListenerStatus;
 import listener.EventListener;
-import listener.EventObserver;
 import listener.EventSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -13,13 +14,17 @@ import java.util.List;
  * @Date: 2018/12/3 19:05
  * @Description:
  */
-public abstract class ThreadTaskAbtractListener implements EventListener,Runnable{
+public class ThreadTaskAbtractListener implements EventListener,Runnable{
 
-    List<EventSource> eventSourceList = new ArrayList<EventSource>();
+    private static final Logger log = LoggerFactory.getLogger(ThreadTaskAbtractListener.class);
 
-    List<EventObserver> observerList = new ArrayList<EventObserver>();
+    List<EventSource> eventSourceList = new LinkedList<>();
 
     private int status = ListenerStatus.NEW;
+
+    public ThreadTaskAbtractListener(){
+
+    }
 
     public void addEvent(EventSource eventSource) {
         eventSourceList.add(eventSource);
@@ -29,16 +34,9 @@ public abstract class ThreadTaskAbtractListener implements EventListener,Runnabl
         eventSourceList.remove(eventSource);
     }
 
-    public void addObserver(EventObserver observer) {
-        observerList.add(observer);
-    }
-
-    public void deleteObserver(EventObserver observer) {
-        observerList.remove(observer);
-    }
-
     public void start() {
         status = ListenerStatus.START;
+        new Thread(this).start();
     }
 
     public void suspend(long millisecond) {
@@ -58,22 +56,32 @@ public abstract class ThreadTaskAbtractListener implements EventListener,Runnabl
         status = ListenerStatus.CANCEL;
     }
 
-    public abstract boolean listener();
+    /**
+     * 监听观察者对象
+     * @return
+     */
+    public boolean listener(){
+        for (EventSource eventSource : eventSourceList){
+            boolean isTrigger = eventSource.isTrigger();
+            if(isTrigger){
+                System.out.println("ee:"+eventSource.getEventObject());
+                eventSource.change();
+            }
+        }
+        return false;
+    }
 
     public void run() {
        try {
-           boolean flag = false;
            while (status == ListenerStatus.START ){
-               flag = listener();
-               if(flag){
-                   for(EventObserver observer : observerList){
-                       observer.update(null);
-                   }
-               }
+               Thread.sleep(2000);
+               listener();
            }
        }catch (Exception e){
            e.printStackTrace();
            status = ListenerStatus.EXCEPTION;
        }
     }
+
+
 }

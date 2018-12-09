@@ -19,18 +19,6 @@ public interface EventListener {
     public void deleteEvent(EventSource eventSource);
 
     /**
-     * 添加观察者
-     * @param observer
-     */
-    public void addObserver(EventObserver observer);
-
-    /**
-     * 删除观察者
-     * @param observer
-     */
-    public void deleteObserver(EventObserver observer);
-
-    /**
      * 开始
      */
     public void start();
@@ -45,4 +33,10 @@ public interface EventListener {
      * 关闭
      */
     public void cancel();
+
+    /**
+     * 监听观察者对象
+     * @return
+     */
+    public boolean listener();
 }

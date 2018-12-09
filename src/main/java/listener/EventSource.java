@@ -34,5 +34,28 @@ public interface EventSource {
      * 获取被观察者对象
      * @return
      */
-    public List<ITask> getEventObject();
+    public ITask getEventObject();
+
+    /**
+     * 添加观察者
+     * @param observer
+     */
+    public void addObserver(EventObserver observer);
+
+    /**
+     * 删除观察者
+     * @param observer
+     */
+    public void deleteObserver(EventObserver observer);
+
+    /**
+     * 通知
+     */
+    public void change();
+
+    /**
+     * 是否触发事件
+     * @return
+     */
+    public boolean isTrigger();
 }

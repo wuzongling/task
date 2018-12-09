@@ -19,11 +19,12 @@ public class TreadTaskFactory {
 
     public static ITaskGroup buildTaskGroup(List<ITask> list, ThreadPoolExecutor threadPoolExecutor,boolean synResult){
         ITaskGroup taskGroup = new AbstractThreadTaskGroup(threadPoolExecutor,synResult) {
+
             @Override
-            public Object collectCalculate(ArrayList params) {
+            public Object collectCalculate(List params) {
+                System.out.println(params);
                 return null;
             }
-
         };
         for (ITask task : list){
             taskGroup.addTask(task);
