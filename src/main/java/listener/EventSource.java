@@ -19,6 +19,12 @@ public interface EventSource {
     public String getName();
 
     /**
+     * 获取事件类型
+     * @return
+     */
+    public int getType();
+
+    /**
      * 添加被观察者对象
      * @param task
      */

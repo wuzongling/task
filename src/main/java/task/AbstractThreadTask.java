@@ -1,17 +1,20 @@
 package task;
 
+import constant.EventType;
 import constant.TaskStatus;
 import interf.ITask;
+import listener.EventObserver;
+import listener.EventSource;
+import listener.threadTask.ThreadCompleteEvent;
+import listener.threadTask.ThreadErrorEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.ParamsUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.FutureTask;
+import java.util.Map;
+import java.util.concurrent.*;
 
 /**
  * 线程任务基类
@@ -36,8 +39,10 @@ public abstract class AbstractThreadTask implements ITask,Callable{
 
     private boolean isErrorCall = true;
 
+    private Map<Integer,EventSource> eventMap = new ConcurrentHashMap<>();
+
     public AbstractThreadTask(List params){
-        this.params = params;
+        this(params,false);
     }
 
     public AbstractThreadTask(List params,boolean synResult){
@@ -48,11 +53,31 @@ public abstract class AbstractThreadTask implements ITask,Callable{
     public AbstractThreadTask(){
     }
 
+    {
+        //初始化事件
+        EventSource completeEvent = new ThreadCompleteEvent();
+        EventSource errorEvent = new ThreadErrorEvent();
+        completeEvent.addEventObject(this);
+        errorEvent.addEventObject(this);
+        eventMap.put(completeEvent.getType(),completeEvent);
+        eventMap.put(errorEvent.getType(),errorEvent);
+    }
+
+    protected void init(){
+        initEvent();
+    }
+
+    private void initEvent(){
+        if(eventMap == null || eventMap.size() == 0){
+
+        }
+    }
     public String getName(){
         return Thread.currentThread().getName()+"_AbstractThreadTask";
     }
 
     public void preHandle(List params) throws Exception{
+        init();
         log.info(name+"开始执行 params:"+ ParamsUtil.toParamsString(params));
     }
 
@@ -93,6 +118,11 @@ public abstract class AbstractThreadTask implements ITask,Callable{
         futureTask.cancel(flag);
     }
 
+    public void register(int type, EventObserver observer){
+        EventSource eventSource = eventMap.get(type);
+        eventSource.addObserver(observer);
+    }
+
     public abstract void errorCall(Exception e,List params);
 
     public void start(){
@@ -106,12 +136,24 @@ public abstract class AbstractThreadTask implements ITask,Callable{
             result = excute(params);
             postHandle(result,params);
             status = TaskStatus.NORMAL;
+            eventChange(EventType.NORMAL_EVENT);
         }catch (Exception e){
             log.error(name+"发生异常,params:"+params,e);
             status = TaskStatus.EXCEPTIONAL;
             errorHandle(e,params);
+            eventChange(EventType.EXCEPTIONAL_EVENT);
         }
         return result;
+    }
+
+    private void eventChange(final int eventType){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                EventSource eventSource = eventMap.get(eventType);
+                eventSource.change();
+            }
+        }).start();
     }
 
     public void setParams(List params) {

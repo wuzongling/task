@@ -1,0 +1,12 @@
+2018-12-10 00:03:17 上午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:56) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-10 00:03:17 上午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:56) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-10 00:03:17 上午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:56) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-10 00:03:54 上午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:56) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-10 00:03:54 上午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:56) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-10 00:03:54 上午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:56) ]
+INFO:main_AbstractThreadTask开始执行 params:null

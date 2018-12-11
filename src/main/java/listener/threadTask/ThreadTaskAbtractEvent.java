@@ -12,7 +12,7 @@ import java.util.List;
  * @Date: 2018/12/3 15:14
  * @Description:
  */
-public class ThreadTaskAbtractEvent implements EventSource{
+public abstract class ThreadTaskAbtractEvent implements EventSource{
     private String name;
 
     private ITask eventObject;
@@ -35,8 +35,11 @@ public class ThreadTaskAbtractEvent implements EventSource{
         return null;
     }
 
+    @Override
+    public abstract int getType();
+
     public void addEventObject(ITask task) {
-        this.eventObject = eventObject;
+        this.eventObject = task;
     }
 
     public void deleteEventObject(ITask task) {

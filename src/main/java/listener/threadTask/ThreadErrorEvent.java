@@ -1,5 +1,6 @@
 package listener.threadTask;
 
+import constant.EventType;
 import constant.TaskStatus;
 import interf.ITask;
 import listener.EventSource;
@@ -15,9 +16,18 @@ public class ThreadErrorEvent extends ThreadTaskAbtractEvent{
         super(task);
     }
 
+    public ThreadErrorEvent(){
+
+    }
+
     @Override
     public String getName() {
         return "ThreadErrorEvent";
+    }
+
+    @Override
+    public int getType() {
+        return EventType.EXCEPTIONAL_EVENT;
     }
 
     @Override

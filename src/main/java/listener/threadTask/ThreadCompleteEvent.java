@@ -1,5 +1,6 @@
 package listener.threadTask;
 
+import constant.EventType;
 import constant.TaskStatus;
 import interf.ITask;
 
@@ -14,9 +15,18 @@ public class ThreadCompleteEvent extends ThreadTaskAbtractEvent{
         super(task);
     }
 
+    public ThreadCompleteEvent(){
+
+    }
+
     @Override
     public String getName() {
         return "ThreadCompleteEvent";
+    }
+
+    @Override
+    public int getType() {
+        return EventType.NORMAL_EVENT;
     }
 
     @Override

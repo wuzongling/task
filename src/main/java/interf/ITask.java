@@ -1,5 +1,8 @@
 package interf;
 
+import listener.EventObserver;
+import listener.EventSource;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,5 +75,12 @@ public interface ITask {
      * @param flag
      */
     public void cancel(boolean flag);
+
+    /**
+     * 注册事件
+     * @param EventType
+     * @param observer
+     */
+    public void register(int type, EventObserver observer);
 
 }

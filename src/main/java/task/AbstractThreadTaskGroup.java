@@ -43,16 +43,16 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
     public AbstractThreadTaskGroup(){
 
     }
-
-    private void initListener(){
-        eventListener = new ThreadTaskAbtractListener();
-        EventObserver exceptionObserver = new TaskAbstractObserver(this) {
+    EventObserver exceptionObserver;
+    EventObserver completeObserver;
+    {
+        exceptionObserver = new TaskAbstractObserver(this) {
             @Override
             public void update(Object param) {
                 this.taskObserver.cancel(true);
             }
         };
-        EventObserver completeObserver = new TaskAbstractObserver(this) {
+        completeObserver = new TaskAbstractObserver(this) {
             @Override
             public void update(Object param) {
                 synchronized(this){
@@ -74,8 +74,10 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
                 }
             }
         };
+    }
+    private void initListener(){
+        eventListener = new ThreadTaskAbtractListener();
         for(ITask task : taskList){
-            System.out.println("tt:"+task);
             EventSource exceptionEvent = ThreadTaskEventFactory.buildEvent(EventType.EXCEPTIONAL_EVENT,task,exceptionObserver);
             EventSource completeEvent = ThreadTaskEventFactory.buildEvent(EventType.NORMAL_EVENT,task,completeObserver);
             if(exceptionEvent != null){
@@ -91,7 +93,13 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
     public boolean addTask(ITask task) {
         AbstractThreadTask abstractThreadTask = (AbstractThreadTask)task;
         taskList.add(abstractThreadTask);
+        registerEvent(task);
         return true;
+    }
+
+    private void registerEvent(ITask task){
+        task.register(EventType.NORMAL_EVENT,completeObserver);
+        task.register(EventType.EXCEPTIONAL_EVENT,exceptionObserver);
     }
 
     public boolean removeTask(int i) {
@@ -118,7 +126,7 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
     }
 
     public Object postHandle(Object result, ArrayList params) throws Exception {
-        eventListener.cancel();
+//        eventListener.cancel();
         return null;
     }
 
@@ -143,7 +151,7 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
     public void start() {
         status = TaskStatus.COMPLETING;
         try {
-            initListener();
+//            initListener();
             excute(null);
         } catch (Exception e) {
             status = TaskStatus.EXCEPTIONAL;
