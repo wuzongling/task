@@ -3,6 +3,7 @@ package task;
 import constant.EventType;
 import constant.TaskStatus;
 import factory.ThreadTaskEventFactory;
+import interf.Calculate;
 import interf.ITask;
 import interf.ITaskGroup;
 import listener.*;
@@ -11,6 +12,7 @@ import listener.threadTask.ThreadCompleteEvent;
 import listener.threadTask.ThreadTaskAbtractListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.*;
 
@@ -29,6 +31,8 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
     private boolean synResult = false;
 
     private List resultList = new ArrayList();
+    //等待时长，默认30分
+    private long waitMillisecond = 1000*60*30;
 
     EventListener eventListener;
     public AbstractThreadTaskGroup(ThreadPoolExecutor threadPoolExecutor){
@@ -58,9 +62,7 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
                 synchronized(this){
                     AbstractThreadTaskGroup taskGroup = (AbstractThreadTaskGroup) this.taskObserver;
                     ITask task = (ITask)param;
-                    Object o = task.getResult();
-                    System.out.println("t:"+task);
-                    System.out.println("o:"+o);
+                    Object o = task.getResult(waitMillisecond);
                     taskGroup.resultList.add(o);
                     if(resultList.size() == taskList.size()){
                         status = TaskStatus.NORMAL;
@@ -75,6 +77,10 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
             }
         };
     }
+
+    /**
+     * 初始化监听
+     */
     private void initListener(){
         eventListener = new ThreadTaskAbtractListener();
         for(ITask task : taskList){
@@ -131,16 +137,24 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
     }
 
     @Override
-    public Object getResult() {
+    public Object getResult(long millisecond) {
+        Date date = new Date();
+        if(millisecond != 0 && date.getTime() > millisecond){
+            return resultList;
+        }
         if (!synResult){
             //同步
             while (true){
-                if(status == TaskStatus.NORMAL){
+                if(status >= TaskStatus.NORMAL){
                     return resultList;
                 }
             }
         }
         return resultList;
+    }
+
+    public Object getResult() {
+        return getResult(waitMillisecond);
     }
 
     public void errorHandle(Exception e, List params) {
@@ -153,6 +167,7 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
         try {
 //            initListener();
             excute(null);
+            getResult();
         } catch (Exception e) {
             status = TaskStatus.EXCEPTIONAL;
             errorHandle(e,null);

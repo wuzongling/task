@@ -1,5 +1,6 @@
 package factory;
 
+import interf.Calculate;
 import interf.ITask;
 import interf.ITaskGroup;
 import interf.ParamSeparate;
@@ -19,10 +20,8 @@ public class TreadTaskFactory {
 
     public static ITaskGroup buildTaskGroup(List<ITask> list, ThreadPoolExecutor threadPoolExecutor,boolean synResult){
         ITaskGroup taskGroup = new AbstractThreadTaskGroup(threadPoolExecutor,synResult) {
-
             @Override
             public Object collectCalculate(List params) {
-                System.out.println(params);
                 return null;
             }
         };
@@ -30,6 +29,27 @@ public class TreadTaskFactory {
             taskGroup.addTask(task);
         }
         return taskGroup;
+    }
+
+    public static ITaskGroup buildTaskGroup(List<ITask> list,boolean synResult){
+        return buildTaskGroup(list,null,synResult);
+    }
+
+    public static ITaskGroup buildTaskGroup(List<ITask> list, ThreadPoolExecutor threadPoolExecutor, boolean synResult, Calculate calculate){
+        ITaskGroup taskGroup = new AbstractThreadTaskGroup(threadPoolExecutor,synResult) {
+            @Override
+            public Object collectCalculate(List params) {
+                return calculate.combineCalculate(params);
+            }
+        };
+        for (ITask task : list){
+            taskGroup.addTask(task);
+        }
+        return taskGroup;
+    }
+
+    public static ITaskGroup buildTaskGroup(List<ITask> list, boolean synResult, Calculate calculate){
+        return buildTaskGroup(list,null,synResult,calculate);
     }
 
 }

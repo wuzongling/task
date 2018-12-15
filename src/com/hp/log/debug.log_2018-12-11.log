@@ -1,0 +1,354 @@
+2018-12-11 22:16:42 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:71) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:16:42 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:71) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:16:42 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:71) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:16:42 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:132) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:130)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:16:43 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:132) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:130)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:16:42 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:132) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:130)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:19:13 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:71) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:19:13 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:71) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:19:13 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:71) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:19:17 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:132) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:130)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:19:18 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:132) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:130)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:19:21 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:132) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:130)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:21:23 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:71) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:21:23 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:71) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:21:23 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:71) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:21:24 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:132) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:130)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:21:24 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:132) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:130)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:22:00 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:132) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:130)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:23:20 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:71) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:23:20 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:71) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:23:20 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:71) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:23:20 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:132) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:130)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:23:20 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:132) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:130)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:23:55 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:132) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:130)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:24:37 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:71) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:24:37 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:71) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:24:37 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:71) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:24:37 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:132) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:130)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:24:37 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:132) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:130)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:24:37 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:132) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:130)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:28:29 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:76) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:28:29 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:76) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:28:29 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:76) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:28:29 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:137) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:135)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:28:29 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:137) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:135)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:28:29 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:137) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:135)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:29:12 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:76) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:29:12 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:76) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:29:12 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:76) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:29:12 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:137) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:135)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:29:12 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:137) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:135)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:29:12 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:137) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:135)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:37:06 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:78) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:37:06 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:140) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:138)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:37:06 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:78) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:37:06 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:140) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:138)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:37:06 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:78) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:37:06 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:140) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:138)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:38:16 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:78) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:38:16 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:78) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:38:16 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:140) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:138)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:38:16 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:140) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:138)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:38:16 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:78) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:38:16 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.call(AbstractThreadTask.java:140) ]
+ERROR:main_AbstractThreadTask发生异常,params:null
+java.lang.NullPointerException
+	at task.AbstractThreadTaskGroup$2.update(AbstractThreadTaskGroup.java:61)
+	at listener.threadTask.ThreadTaskAbtractEvent.change(ThreadTaskAbtractEvent.java:63)
+	at task.AbstractThreadTask.call(AbstractThreadTask.java:138)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2018-12-11 22:39:25 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:81) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:39:25 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:81) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:39:25 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:81) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:39:44 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:81) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:39:44 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:81) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:39:44 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:81) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:42:38 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:81) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:42:38 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:81) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:42:38 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:81) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:47:03 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:81) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:47:03 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:81) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:47:03 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:81) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:48:37 下午 [Thread: pool-1-thread-1][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:81) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:48:37 下午 [Thread: pool-1-thread-2][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:81) ]
+INFO:main_AbstractThreadTask开始执行 params:null
+2018-12-11 22:48:37 下午 [Thread: pool-1-thread-3][ Class:task.AbstractThreadTask >> Method: task.AbstractThreadTask.preHandle(AbstractThreadTask.java:81) ]
+INFO:main_AbstractThreadTask开始执行 params:null
