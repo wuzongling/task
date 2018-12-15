@@ -2,28 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e571f85-b805-48ea-966d-3f4599b53a88" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hp/log/debug.log_2018-12-11.log" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hp/log/error.log_2018-12-11.log" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hp/log/info.log_2018-12-11.log" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hp/log/warn.log_2018-12-11.log" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/interf/Calculate.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ErrorTaskTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/factory/TreadTaskFactory$1.class" afterPath="$PROJECT_DIR$/target/classes/factory/TreadTaskFactory$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/factory/TreadTaskFactory.class" afterPath="$PROJECT_DIR$/target/classes/factory/TreadTaskFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/interf/ITask.class" afterPath="$PROJECT_DIR$/target/classes/interf/ITask.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/task/AbstractThreadTask.class" afterPath="$PROJECT_DIR$/target/classes/task/AbstractThreadTask.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/task/AbstractThreadTaskGroup.class" afterPath="$PROJECT_DIR$/target/classes/task/AbstractThreadTaskGroup.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/Test.class" afterPath="$PROJECT_DIR$/target/test-classes/Test.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hp/log/debug.log" afterPath="$PROJECT_DIR$/src/com/hp/log/debug.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hp/log/error.log" afterPath="$PROJECT_DIR$/src/com/hp/log/error.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hp/log/info.log" afterPath="$PROJECT_DIR$/src/com/hp/log/info.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hp/log/warn.log" afterPath="$PROJECT_DIR$/src/com/hp/log/warn.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/factory/TreadTaskFactory.java" afterPath="$PROJECT_DIR$/src/main/java/factory/TreadTaskFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/interf/ITask.java" afterPath="$PROJECT_DIR$/src/main/java/interf/ITask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/task/AbstractThreadTask.java" afterPath="$PROJECT_DIR$/src/main/java/task/AbstractThreadTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/task/AbstractThreadTaskGroup.java" afterPath="$PROJECT_DIR$/src/main/java/task/AbstractThreadTaskGroup.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/Test.java" afterPath="$PROJECT_DIR$/src/test/java/Test.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -110,7 +90,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AbstractThreadTaskGroup.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AbstractThreadTaskGroup.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/task/AbstractThreadTaskGroup.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="140">
@@ -119,6 +99,16 @@
                 <element signature="e#3754#3755#0" expanded="true" />
                 <element signature="e#3836#3837#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20">
+              <caret line="1" column="3" lean-forward="false" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -214,6 +204,7 @@
         <option value="$PROJECT_DIR$/src/test/java/Test.java" />
         <option value="$PROJECT_DIR$/src/main/java/task/AbstractThreadTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/task/AbstractThreadTaskGroup.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -311,54 +302,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="task" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="task" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="task" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="task" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -375,6 +318,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="task" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="task" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -880,7 +837,7 @@
       <workItem from="1543922888813" duration="2657000" />
       <workItem from="1544241507247" duration="21690000" />
       <workItem from="1544536349357" duration="3739000" />
-      <workItem from="1544859740178" duration="9591000" />
+      <workItem from="1544859740178" duration="10294000" />
     </task>
     <task id="LOCAL-00001" summary="添加监听器">
       <created>1543837908294</created>
@@ -903,7 +860,14 @@
       <option name="project" value="LOCAL" />
       <updated>1544539771276</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="线程任务测试完成">
+      <created>1544882585959</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1544882585959</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -939,11 +903,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73174000" />
+    <option name="totallyTimeSpent" value="73877000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="1" width="1364" height="727" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -960,7 +924,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30138037" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30138037" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1019,7 +983,8 @@
     <MESSAGE value="添加监听器" />
     <MESSAGE value="修复监听器bug" />
     <MESSAGE value="添加事件主动触发机制" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加事件主动触发机制" />
+    <MESSAGE value="线程任务测试完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="线程任务测试完成" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1032,14 +997,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="8" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/task/IntCountSeparate.kt" />
     <entry file="jar://D:/Java/jdk1.8.0_20/src.zip!/java/lang/Class.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1440,6 +1397,14 @@
             <element signature="e#3754#3755#0" expanded="true" />
             <element signature="e#3836#3837#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="3" lean-forward="false" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
