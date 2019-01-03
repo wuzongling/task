@@ -6,6 +6,7 @@ import factory.ThreadTaskEventFactory;
 import interf.ITask;
 import listener.EventObserver;
 import listener.EventSource;
+import org.apache.commons.lang3.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.ParamsUtil;
@@ -16,6 +17,7 @@ import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.FutureTask;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 线程任务基类
@@ -38,6 +40,12 @@ public abstract class AbstractThreadTask implements ITask, Callable {
     private String name = getName();
 
     volatile int status = TaskStatus.NEW;
+
+    //重试次数
+    private int retriesCount = 0;
+
+    //重试中间计算次数
+    private int retriesModCount = 0;
 
     private boolean isErrorCall = true;
 
@@ -97,14 +105,10 @@ public abstract class AbstractThreadTask implements ITask, Callable {
         return result;
     }
 
-    public Object getResult(long millisecond) {
-        Date date = new Date();
-        if (millisecond != 0 && date.getTime() > millisecond) {
-            return result;
-        }
+    public Object getResult(int millisecond) {
         try {
             if (synResult) {
-                result = futureTask.get();
+                result = futureTask.get(millisecond, TimeUnit.MILLISECONDS);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -154,10 +158,18 @@ public abstract class AbstractThreadTask implements ITask, Callable {
             status = TaskStatus.NORMAL;
             eventChange(EventType.NORMAL_EVENT);
         } catch (Exception e) {
-            log.error(getName() + "发生异常,params:" + params, e);
-            errorHandle(e, params);
-            status = TaskStatus.EXCEPTIONAL;
-            eventChange(EventType.EXCEPTIONAL_EVENT);
+            if(retriesModCount < retriesCount){
+                retriesModCount++;
+                log.info("第"+retriesModCount+"次重试");
+                call();
+            }else {
+                log.error(getName() + "发生异常,params:" + params, e);
+                errorHandle(e, params);
+                status = TaskStatus.EXCEPTIONAL;
+                eventChange(EventType.EXCEPTIONAL_EVENT);
+            }
+        }finally {
+            retriesModCount = 0;
         }
         return result;
     }
@@ -183,5 +195,13 @@ public abstract class AbstractThreadTask implements ITask, Callable {
 
     public void setErrorCall(boolean errorCall) {
         isErrorCall = errorCall;
+    }
+
+    public int getRetriesCount() {
+        return retriesCount;
+    }
+
+    public void setRetriesCount(int retriesCount) {
+        this.retriesCount = retriesCount;
     }
 }

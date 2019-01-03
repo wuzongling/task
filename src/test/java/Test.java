@@ -19,12 +19,13 @@ public class Test {
         treadTaskTest2.setName("task2");
         ErrorTaskTest errorTaskTest = new ErrorTaskTest();
         errorTaskTest.setName("task3");
+        errorTaskTest.setRetriesCount(2);
         list.add(treadTaskTest1);
         list.add(treadTaskTest2);
         list.add(errorTaskTest);
         ITaskGroup taskGroup = TreadTaskFactory.buildTaskGroup(list,true);
         taskGroup.start();
-        System.out.println("结果："+taskGroup.getResult(10000));
+        System.out.println("结果："+taskGroup.getResult(1000000));
     }
 
     public static void main(String[] args) {

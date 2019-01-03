@@ -10,6 +10,7 @@ import listener.*;
 import listener.threadTask.TaskAbstractObserver;
 import listener.threadTask.ThreadCompleteEvent;
 import listener.threadTask.ThreadTaskAbtractListener;
+import org.apache.commons.lang3.time.DateUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,7 +33,7 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
 
     private List resultList = new ArrayList();
     //等待时长，默认30分
-    private long waitMillisecond = 1000*60*30;
+    private int waitMillisecond = 1000*60*30;
     //异常观察者
     EventObserver exceptionObserver;
     //事件完成观察者
@@ -149,14 +150,16 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
     }
 
     @Override
-    public Object getResult(long millisecond) {
-        Date date = new Date();
-        if(millisecond != 0 && date.getTime() > millisecond){
-            return resultList;
-        }
+    public Object getResult(int millisecond) {
+
+        //同步
         if (synResult){
-            //同步
+            Date currentDate = new Date();
+            Date expirationTime = DateUtils.addMilliseconds(currentDate,millisecond);
             while (true){
+                if(currentDate.getTime() > expirationTime.getTime()){
+                    return resultList;
+                }
                 if(status >= TaskStatus.NORMAL){
                     return resultList;
                 }

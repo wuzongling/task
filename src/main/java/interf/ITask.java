@@ -44,7 +44,7 @@ public interface ITask {
      * 获取任务结果
      * @return
      */
-    public Object getResult(long millisecond);
+    public Object getResult(int millisecond);
 
     /**
      * 获取任务状态
