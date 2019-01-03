@@ -27,55 +27,67 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
     private ArrayList<AbstractThreadTask> taskList = new ArrayList();
 
     private ThreadPoolExecutor threadPoolExecutor;
-
-    private boolean synResult = false;
+    //是否同步
+    private boolean synResult = true;
 
     private List resultList = new ArrayList();
     //等待时长，默认30分
     private long waitMillisecond = 1000*60*30;
+    //异常观察者
+    EventObserver exceptionObserver;
+    //事件完成观察者
+    EventObserver completeObserver;
 
     EventListener eventListener;
     public AbstractThreadTaskGroup(ThreadPoolExecutor threadPoolExecutor){
         this.threadPoolExecutor = threadPoolExecutor;
+        init();
     }
 
     public AbstractThreadTaskGroup(ThreadPoolExecutor threadPoolExecutor,boolean synResult){
         this.threadPoolExecutor = threadPoolExecutor;
         this.synResult = synResult;
+        init();
     }
 
     public AbstractThreadTaskGroup(){
-
+        init();
     }
-    EventObserver exceptionObserver;
-    EventObserver completeObserver;
-    {
-        exceptionObserver = new TaskAbstractObserver(this) {
-            @Override
-            public void update(Object param) {
-                this.taskObserver.cancel(true);
-            }
-        };
-        completeObserver = new TaskAbstractObserver(this) {
-            @Override
-            public void update(Object param) {
-                synchronized(this){
-                    AbstractThreadTaskGroup taskGroup = (AbstractThreadTaskGroup) this.taskObserver;
-                    ITask task = (ITask)param;
-                    Object o = task.getResult(waitMillisecond);
-                    taskGroup.resultList.add(o);
-                    if(resultList.size() == taskList.size()){
-                        status = TaskStatus.NORMAL;
-                        collectCalculate(resultList);
-                        try {
-                            postHandle(resultList,null);
-                        } catch (Exception e) {
-                            throw new RuntimeException(e);
+    @Override
+    public void init(){
+        if(exceptionObserver == null){
+            exceptionObserver = new TaskAbstractObserver(this) {
+                @Override
+                public void update(Object param) {
+                    this.taskObserver.cancel(true);
+                }
+            };
+        }
+
+        if(completeObserver == null){
+            completeObserver = new TaskAbstractObserver(this) {
+                @Override
+                public void update(Object param) {
+                    synchronized(this){
+                        AbstractThreadTaskGroup taskGroup = (AbstractThreadTaskGroup) this.taskObserver;
+                        //正在执行的任务
+                        ITask task = (ITask)param;
+                        Object o = task.getResult(waitMillisecond);
+                        taskGroup.resultList.add(o);
+                        if(resultList.size() == taskList.size()){
+                            status = TaskStatus.NORMAL;
+                            collectCalculate(resultList);
+                            try {
+                                postHandle(resultList,null);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
                         }
                     }
                 }
-            }
-        };
+            };
+        }
+
     }
 
     /**
@@ -131,9 +143,9 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
         return null;
     }
 
-    public Object postHandle(Object result, ArrayList params) throws Exception {
-//        eventListener.cancel();
-        return null;
+    @Override
+    public Object postHandle(Object result, List params) throws Exception {
+        return super.postHandle(result,params);
     }
 
     @Override
@@ -142,7 +154,7 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
         if(millisecond != 0 && date.getTime() > millisecond){
             return resultList;
         }
-        if (!synResult){
+        if (synResult){
             //同步
             while (true){
                 if(status >= TaskStatus.NORMAL){
@@ -157,11 +169,6 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
         return getResult(waitMillisecond);
     }
 
-    public void errorHandle(Exception e, List params) {
-        cancel(true);
-        errorCall(e,params);
-    }
-
     public void start() {
         status = TaskStatus.COMPLETING;
         try {
@@ -173,23 +180,44 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
             errorHandle(e,null);
         }
     }
-
+    @Override
     public void suspend(long millisecond) throws Exception {
         for(ITask task : taskList){
             task.suspend(millisecond);
         }
     }
 
+    @Override
+    public void errorHandle(Exception e, List params) {
+        super.errorHandle(e,params);
+    }
+
+    @Override
     public void cancel(boolean flag) {
         if(status != TaskStatus.CANCELLED){
             status = TaskStatus.CANCELLED;
-            int ctaskStatus;
+            //是否出现异常以上的级别
+            int flagStatus = 0;
             for(ITask task : taskList){
-                ctaskStatus = task.getStatus();
-                if(ctaskStatus != TaskStatus.EXCEPTIONAL){
-                    task.cancel(true);
-                    task.errorHandle(null,null);
+                int ctaskStatus = task.getStatus();
+                if(ctaskStatus >= TaskStatus.EXCEPTIONAL){
+                    flagStatus = ctaskStatus;
+                        break;
                 }
+            }
+
+            if(flagStatus >= TaskStatus.EXCEPTIONAL){
+                taskList.stream().forEach((task)->{
+                    int ctaskStatus = task.getStatus();
+                    //没有发现异常的任务进行回滚，发生过异常的已经回滚过了
+                    if(ctaskStatus < TaskStatus.EXCEPTIONAL){
+                        task.errorHandle(null,null);
+                    }
+                });
+            }else {
+                taskList.stream().forEach((task)->{
+                    task.cancel(true);
+                });
             }
             taskList = null;
         }
@@ -207,7 +235,6 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
 
     @Override
     public void errorCall(Exception e, List params) {
-
     }
 
 }

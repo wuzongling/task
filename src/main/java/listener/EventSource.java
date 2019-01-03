@@ -5,7 +5,7 @@ import interf.ITask;
 import java.util.List;
 
 /**
- * 事件源
+ * 事件源（Observable）
  * @Auther: zonglin_wu
  * @Date: 2018/12/3 14:04
  * @Description:

@@ -35,17 +35,19 @@ public class ThreadTaskAbtractListener implements EventListener,Runnable{
     }
 
     public void start() {
+        log.info("开始监听");
         status = ListenerStatus.START;
         new Thread(this).start();
     }
 
     public void suspend(long millisecond) {
         try {
+            log.info("监听器暂停");
             status = ListenerStatus.SUSPEND;
             Thread.sleep(millisecond);
-
         }catch (InterruptedException e){
-
+            log.info("监听器重新监听");
+            Thread.currentThread().interrupt();
         }
         finally {
             status = ListenerStatus.START;
@@ -53,6 +55,7 @@ public class ThreadTaskAbtractListener implements EventListener,Runnable{
     }
 
     public void cancel() {
+        log.info("监听器关闭");
         status = ListenerStatus.CANCEL;
     }
 
@@ -64,7 +67,6 @@ public class ThreadTaskAbtractListener implements EventListener,Runnable{
         for (EventSource eventSource : eventSourceList){
             boolean isTrigger = eventSource.isTrigger();
             if(isTrigger){
-                System.out.println("ee:"+eventSource.getEventObject());
                 eventSource.change();
             }
         }

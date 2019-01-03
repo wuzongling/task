@@ -29,10 +29,21 @@ public abstract class ThreadTaskAbtractEvent implements EventSource{
         this.eventObject = eventObject;
         this.observerList = observerList;
     }
-
+    public ThreadTaskAbtractEvent(ITask eventObject,List<EventObserver> observerList,String name){
+        this.eventObject = eventObject;
+        this.observerList = observerList;
+        this.name = name;
+    }
 
     public String getName() {
-        return null;
+        if(name == null || name == ""){
+            setName(Thread.currentThread().getName()+"_event");
+        }
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override

@@ -14,15 +14,15 @@ public class Test {
     public static void threadTaskTest(){
         List list = new ArrayList();
         TreadTaskTest treadTaskTest1 = new TreadTaskTest();
-//        treadTaskTest1.setName("task1");
+        treadTaskTest1.setName("task1");
         TreadTaskTest treadTaskTest2 = new TreadTaskTest();
-//        treadTaskTest2.setName("task2");
+        treadTaskTest2.setName("task2");
         ErrorTaskTest errorTaskTest = new ErrorTaskTest();
-//        errorTaskTest.setName("task3");
+        errorTaskTest.setName("task3");
         list.add(treadTaskTest1);
         list.add(treadTaskTest2);
         list.add(errorTaskTest);
-        ITaskGroup taskGroup = TreadTaskFactory.buildTaskGroup(list,false);
+        ITaskGroup taskGroup = TreadTaskFactory.buildTaskGroup(list,true);
         taskGroup.start();
         System.out.println("结果："+taskGroup.getResult(10000));
     }
