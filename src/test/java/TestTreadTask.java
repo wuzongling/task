@@ -9,7 +9,7 @@ import java.util.Random;
  * @Date: 2018/12/2 16:23
  * @Description:
  */
-public class TreadTaskTest extends AbstractThreadTask{
+public class TestTreadTask extends AbstractThreadTask{
 
     public Object postHandle(Object result, List params) throws Exception {
         System.out.println(getName()+":任务执行后");

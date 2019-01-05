@@ -6,6 +6,7 @@ import factory.ThreadTaskEventFactory;
 import interf.ITask;
 import listener.EventObserver;
 import listener.EventSource;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -107,7 +108,7 @@ public abstract class AbstractThreadTask implements ITask, Callable {
 
     public Object getResult(int millisecond) {
         try {
-            if (synResult) {
+            if (synResult && result == null) {
                 result = futureTask.get(millisecond, TimeUnit.MILLISECONDS);
             }
         } catch (Exception e) {

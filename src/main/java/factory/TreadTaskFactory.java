@@ -35,6 +35,10 @@ public class TreadTaskFactory {
         return buildTaskGroup(list,null,synResult);
     }
 
+    public static ITaskGroup buildTaskGroup(List<ITask> list, boolean synResult, Calculate calculate){
+        return buildTaskGroup(list,null,synResult,calculate);
+    }
+
     public static ITaskGroup buildTaskGroup(List<ITask> list, ThreadPoolExecutor threadPoolExecutor, boolean synResult, Calculate calculate){
         ITaskGroup taskGroup = new AbstractThreadTaskGroup(threadPoolExecutor,synResult) {
             @Override
@@ -46,10 +50,6 @@ public class TreadTaskFactory {
             taskGroup.addTask(task);
         }
         return taskGroup;
-    }
-
-    public static ITaskGroup buildTaskGroup(List<ITask> list, boolean synResult, Calculate calculate){
-        return buildTaskGroup(list,null,synResult,calculate);
     }
 
 }

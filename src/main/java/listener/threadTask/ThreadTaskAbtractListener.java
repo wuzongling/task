@@ -37,7 +37,9 @@ public class ThreadTaskAbtractListener implements EventListener,Runnable{
     public void start() {
         log.info("开始监听");
         status = ListenerStatus.START;
-        new Thread(this).start();
+        Thread thread = new Thread(this);
+        thread.setDaemon(true);
+        thread.start();
     }
 
     public void suspend(long millisecond) {

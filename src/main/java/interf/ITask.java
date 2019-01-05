@@ -42,6 +42,7 @@ public interface ITask {
 
     /**
      * 获取任务结果
+     * @param millisecond 过期毫秒
      * @return
      */
     public Object getResult(int millisecond);

@@ -3,19 +3,21 @@ package task;
 import constant.EventType;
 import constant.TaskStatus;
 import factory.ThreadTaskEventFactory;
-import interf.Calculate;
 import interf.ITask;
 import interf.ITaskGroup;
-import listener.*;
+import listener.EventListener;
+import listener.EventObserver;
+import listener.EventSource;
 import listener.threadTask.TaskAbstractObserver;
-import listener.threadTask.ThreadCompleteEvent;
 import listener.threadTask.ThreadTaskAbtractListener;
 import org.apache.commons.lang3.time.DateUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 线程任务组基类
@@ -54,8 +56,16 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
     public AbstractThreadTaskGroup(){
         init();
     }
+
     @Override
     public void init(){
+        initObserver();
+    }
+
+    /**
+     * 初始化事件
+     */
+    private void initObserver(){
         if(exceptionObserver == null){
             exceptionObserver = new TaskAbstractObserver(this) {
                 @Override
@@ -73,8 +83,8 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
                         AbstractThreadTaskGroup taskGroup = (AbstractThreadTaskGroup) this.taskObserver;
                         //正在执行的任务
                         ITask task = (ITask)param;
-                        Object o = task.getResult(waitMillisecond);
-                        taskGroup.resultList.add(o);
+                        Object result = task.getResult(waitMillisecond);
+                        taskGroup.resultList.add(result);
                         if(resultList.size() == taskList.size()){
                             status = TaskStatus.NORMAL;
                             collectCalculate(resultList);
@@ -88,8 +98,8 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
                 }
             };
         }
-
     }
+
 
     /**
      * 初始化监听
@@ -146,6 +156,9 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
 
     @Override
     public Object postHandle(Object result, List params) throws Exception {
+        if(eventListener != null){
+            eventListener.cancel();
+        }
         return super.postHandle(result,params);
     }
 
