@@ -1,4 +1,4 @@
-package listener.threadTask;
+package listener.threadtask;
 
 import interf.ITask;
 import listener.EventObserver;
@@ -9,12 +9,17 @@ import listener.EventObserver;
  * @Description:
  */
 public abstract class TaskAbstractObserver implements EventObserver{
-    public ITask taskObserver;
+    private ITask taskObserver;
 
     public TaskAbstractObserver(ITask task){
         this.taskObserver = task;
     }
 
-    @Override
-    public abstract void update(Object param);
+    public ITask getTaskObserver() {
+        return taskObserver;
+    }
+
+    public void setTaskObserver(ITask taskObserver) {
+        this.taskObserver = taskObserver;
+    }
 }

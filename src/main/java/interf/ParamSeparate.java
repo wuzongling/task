@@ -11,5 +11,5 @@ import java.util.Map;
  */
 public interface ParamSeparate<T> {
 
-    public ArrayList<List<T>> separate(Object separate);
+    public List<List<T>> separate(Object separate);
 }

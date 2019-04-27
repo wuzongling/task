@@ -3,11 +3,8 @@ package factory;
 import interf.Calculate;
 import interf.ITask;
 import interf.ITaskGroup;
-import interf.ParamSeparate;
-import task.AbstractThreadTask;
 import task.AbstractThreadTaskGroup;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -17,6 +14,8 @@ import java.util.concurrent.ThreadPoolExecutor;
  * @Description:
  */
 public class TreadTaskFactory {
+
+    private TreadTaskFactory() {throw new IllegalStateException("Utility class");}
 
     public static ITaskGroup buildTaskGroup(List<ITask> list, ThreadPoolExecutor threadPoolExecutor,boolean synResult){
         ITaskGroup taskGroup = new AbstractThreadTaskGroup(threadPoolExecutor,synResult) {

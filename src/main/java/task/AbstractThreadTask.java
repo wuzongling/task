@@ -2,17 +2,15 @@ package task;
 
 import constant.EventType;
 import constant.TaskStatus;
+import exception.ThreadTaskException;
 import factory.ThreadTaskEventFactory;
 import interf.ITask;
 import listener.EventObserver;
 import listener.EventSource;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.ParamsUtil;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Callable;
@@ -96,13 +94,15 @@ public abstract class AbstractThreadTask implements ITask, Callable {
     }
 
     public void preHandle(List params) throws Exception {
-        log.info(getName() + "开始执行 params:" + ParamsUtil.toParamsString(params));
+        if (log.isInfoEnabled()){
+            log.info(" {0}开始执行 params:{1} ",getName(),ParamsUtil.toParamsString(params));
+        }
     }
 
-    public abstract Object excute(List params) throws Exception;
-
     public Object postHandle(Object result, List params) throws Exception {
-        log.info(getName() + "执行完成，执行结果：" + ParamsUtil.toResultString(result));
+        if (log.isDebugEnabled()){
+            log.debug(" {0}执行完成，执行结果：{1} ",getName(),ParamsUtil.toResultString(result));
+        }
         return result;
     }
 
@@ -112,7 +112,7 @@ public abstract class AbstractThreadTask implements ITask, Callable {
                 result = futureTask.get(millisecond, TimeUnit.MILLISECONDS);
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new ThreadTaskException(e);
         }
         return result;
     }
@@ -124,7 +124,6 @@ public abstract class AbstractThreadTask implements ITask, Callable {
     public void errorHandle(Exception e, List params) {
         cancel(true);
         if (isErrorCall) {
-
             errorCall(e, params);
         }
         status = TaskStatus.EXCEPTIONAL;

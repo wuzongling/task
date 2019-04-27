@@ -1,9 +1,7 @@
 package interf;
 
 import listener.EventObserver;
-import listener.EventSource;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -79,7 +77,7 @@ public interface ITask {
 
     /**
      * 注册事件
-     * @param EventType
+     * @param type
      * @param observer
      */
     public void register(int type, EventObserver observer);

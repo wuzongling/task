@@ -6,14 +6,15 @@ package constant;
  * @Description:
  */
 public class ListenerStatus {
+    private ListenerStatus(){}
     //新建
-    public final static int NEW = 0;
+    public static final int NEW = 0;
     //开始
-    public final static int START = 1;
+    public static final int START = 1;
     //暂停
-    public final static int SUSPEND = 2;
+    public static final int SUSPEND = 2;
     //关闭
-    public final static int CANCEL = 3;
+    public static final int CANCEL = 3;
     //异常
-    public final static int EXCEPTION = 4;
+    public static final int EXCEPTION = 4;
 }

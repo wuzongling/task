@@ -6,6 +6,7 @@ package constant;
  * @Description:
  */
 public class TaskStatus {
+    private TaskStatus(){}
     //新建
     public static final int NEW          = 0;
     //执行中

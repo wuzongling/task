@@ -1,9 +1,8 @@
-package listener.threadTask;
+package listener.threadtask;
 
 import constant.EventType;
 import constant.TaskStatus;
 import interf.ITask;
-import listener.EventSource;
 
 /**
  * @Auther: zonglin_wu

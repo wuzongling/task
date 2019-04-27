@@ -1,4 +1,4 @@
-package listener.threadTask;
+package listener.threadtask;
 
 import constant.ListenerStatus;
 import listener.EventListener;
@@ -24,6 +24,12 @@ public class ThreadTaskAbtractListener implements EventListener,Runnable{
 
     public ThreadTaskAbtractListener(){
 
+    }
+
+    public ThreadTaskAbtractListener(EventSource... eventSources){
+        for (EventSource eventSource : eventSources){
+            eventSourceList.add(eventSource);
+        }
     }
 
     public void addEvent(EventSource eventSource) {
@@ -82,7 +88,7 @@ public class ThreadTaskAbtractListener implements EventListener,Runnable{
                listener();
            }
        }catch (Exception e){
-           e.printStackTrace();
+           log.error("线程监听异常",e);
            status = ListenerStatus.EXCEPTION;
        }
     }

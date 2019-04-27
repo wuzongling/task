@@ -6,6 +6,8 @@ package constant;
  * @Description:
  */
 public class EventType {
+
+    private EventType(){}
     //新建事件
     public static final int NEW_EVENT          = 0;
     //正常完成事件

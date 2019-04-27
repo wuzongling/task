@@ -2,14 +2,15 @@ package task;
 
 import constant.EventType;
 import constant.TaskStatus;
+import exception.ThreadTaskException;
 import factory.ThreadTaskEventFactory;
 import interf.ITask;
 import interf.ITaskGroup;
 import listener.EventListener;
 import listener.EventObserver;
 import listener.EventSource;
-import listener.threadTask.TaskAbstractObserver;
-import listener.threadTask.ThreadTaskAbtractListener;
+import listener.threadtask.TaskAbstractObserver;
+import listener.threadtask.ThreadTaskAbtractListener;
 import org.apache.commons.lang3.time.DateUtils;
 
 import java.util.ArrayList;
@@ -70,7 +71,7 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
             exceptionObserver = new TaskAbstractObserver(this) {
                 @Override
                 public void update(Object param) {
-                    this.taskObserver.cancel(true);
+                    this.getTaskObserver().cancel(true);
                 }
             };
         }
@@ -80,7 +81,7 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
                 @Override
                 public void update(Object param) {
                     synchronized(this){
-                        AbstractThreadTaskGroup taskGroup = (AbstractThreadTaskGroup) this.taskObserver;
+                        AbstractThreadTaskGroup taskGroup = (AbstractThreadTaskGroup) this.getTaskObserver();
                         //正在执行的任务
                         ITask task = (ITask)param;
                         Object result = task.getResult(waitMillisecond);
@@ -91,7 +92,7 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
                             try {
                                 postHandle(resultList,null);
                             } catch (Exception e) {
-                                throw new RuntimeException(e);
+                                throw new ThreadTaskException(e);
                             }
                         }
                     }
@@ -104,7 +105,7 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
     /**
      * 初始化监听
      */
-    private void initListener(){
+    protected void initListener(){
         eventListener = new ThreadTaskAbtractListener();
         for(ITask task : taskList){
             EventSource exceptionEvent = ThreadTaskEventFactory.buildEvent(EventType.EXCEPTIONAL_EVENT,task,exceptionObserver);
@@ -135,8 +136,6 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
         taskList.remove(i);
         return true;
     }
-
-    public abstract Object collectCalculate(List params);
 
     @Override
     public String getName() {
@@ -188,7 +187,6 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
     public void start() {
         status = TaskStatus.COMPLETING;
         try {
-//            initListener();
             excute(null);
             getResult();
         } catch (Exception e) {
@@ -223,7 +221,7 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
             }
 
             if(flagStatus >= TaskStatus.EXCEPTIONAL){
-                taskList.stream().forEach((task)->{
+                taskList.stream().forEach(task ->{
                     int ctaskStatus = task.getStatus();
                     //没有发现异常的任务进行回滚，发生过异常的已经回滚过了
                     if(ctaskStatus < TaskStatus.EXCEPTIONAL){
@@ -231,9 +229,7 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
                     }
                 });
             }else {
-                taskList.stream().forEach((task)->{
-                    task.cancel(true);
-                });
+                taskList.stream().forEach(task-> task.cancel(true));
             }
             taskList = null;
         }

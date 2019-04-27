@@ -1,4 +1,4 @@
-package listener.threadTask;
+package listener.threadtask;
 
 import interf.ITask;
 import listener.EventObserver;
@@ -17,7 +17,7 @@ public abstract class ThreadTaskAbtractEvent implements EventSource{
 
     private ITask eventObject;
 
-    List<EventObserver> observerList = new ArrayList<EventObserver>();
+    List<EventObserver> observerList = new ArrayList<>();
 
     public ThreadTaskAbtractEvent(){
 
@@ -45,9 +45,6 @@ public abstract class ThreadTaskAbtractEvent implements EventSource{
     public void setName(String name) {
         this.name = name;
     }
-
-    @Override
-    public abstract int getType();
 
     public void addEventObject(ITask task) {
         this.eventObject = task;

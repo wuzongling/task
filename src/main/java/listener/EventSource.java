@@ -2,8 +2,6 @@ package listener;
 
 import interf.ITask;
 
-import java.util.List;
-
 /**
  * 事件源（Observable）
  * @Auther: zonglin_wu

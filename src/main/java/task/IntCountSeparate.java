@@ -3,9 +3,7 @@ package task;
 import interf.ParamSeparate;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Auther: zonglin_wu
@@ -20,9 +18,9 @@ public class IntCountSeparate implements ParamSeparate{
         this.segament = segament;
     }
 
-    public ArrayList<List> separate(Object separate) {
+    public List<List> separate(Object separate) {
         long count = (Long)separate;
-        ArrayList<List> rlist = new ArrayList<List>();
+        ArrayList<List> rlist = new ArrayList<>();
         for (int a = 1;a <= count; a=+segament){
             ArrayList plist = new ArrayList();
             plist.add(a);

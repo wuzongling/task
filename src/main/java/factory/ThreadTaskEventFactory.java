@@ -4,10 +4,8 @@ import constant.EventType;
 import interf.ITask;
 import listener.EventObserver;
 import listener.EventSource;
-import listener.threadTask.ThreadCompleteEvent;
-import listener.threadTask.ThreadErrorEvent;
-
-import java.util.List;
+import listener.threadtask.ThreadCompleteEvent;
+import listener.threadtask.ThreadErrorEvent;
 
 /**
  * @Auther: zonglin_wu
@@ -15,7 +13,7 @@ import java.util.List;
  * @Description:
  */
 public class ThreadTaskEventFactory {
-
+    private ThreadTaskEventFactory(){}
     public static EventSource buildEvent(int eventType, ITask task){
         switch (eventType){
             case EventType.EXCEPTIONAL_EVENT : return new ThreadErrorEvent(task);
