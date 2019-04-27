@@ -22,6 +22,7 @@ public class TestTreadTask extends AbstractThreadTask{
     }
 
     public Object excute(List params) throws Exception {
+//        Thread.sleep(2000);
         System.out.println(getName()+":任务执行");
         int r = new Random().nextInt();
         System.out.println(r);

@@ -122,7 +122,6 @@ public abstract class AbstractThreadTask implements ITask, Callable {
     }
 
     public void errorHandle(Exception e, List params) {
-        cancel(true);
         if (isErrorCall) {
             errorCall(e, params);
         }
@@ -170,6 +169,7 @@ public abstract class AbstractThreadTask implements ITask, Callable {
             }
         }finally {
             retriesModCount = 0;
+            cancel(true);
         }
         return result;
     }

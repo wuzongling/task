@@ -2,7 +2,6 @@ package task;
 
 import constant.EventType;
 import constant.TaskStatus;
-import exception.ThreadTaskException;
 import factory.ThreadTaskEventFactory;
 import interf.ITask;
 import interf.ITaskGroup;
@@ -19,6 +18,7 @@ import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * 线程任务组基类
@@ -43,6 +43,13 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
     EventObserver completeObserver;
 
     EventListener eventListener;
+
+    ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+
+    ReentrantReadWriteLock.WriteLock writeLock = lock.writeLock();
+
+    ReentrantReadWriteLock.ReadLock readLock = lock.readLock();
+
     public AbstractThreadTaskGroup(ThreadPoolExecutor threadPoolExecutor){
         this.threadPoolExecutor = threadPoolExecutor;
         init();
@@ -67,38 +74,55 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
      * 初始化事件
      */
     private void initObserver(){
+        //异常处理事件
         if(exceptionObserver == null){
             exceptionObserver = new TaskAbstractObserver(this) {
                 @Override
                 public void update(Object param) {
-                    this.getTaskObserver().cancel(true);
+                    this.getTaskObserver().errorHandle(null,null);
                 }
             };
         }
 
+        //任务完成处理事件
         if(completeObserver == null){
             completeObserver = new TaskAbstractObserver(this) {
                 @Override
                 public void update(Object param) {
                     synchronized(this){
-                        AbstractThreadTaskGroup taskGroup = (AbstractThreadTaskGroup) this.getTaskObserver();
-                        //正在执行的任务
-                        ITask task = (ITask)param;
-                        Object result = task.getResult(waitMillisecond);
-                        taskGroup.resultList.add(result);
-                        if(resultList.size() == taskList.size()){
-                            status = TaskStatus.NORMAL;
-                            collectCalculate(resultList);
-                            try {
+                        try{
+                            //正在执行的任务
+                            ITask task = (ITask)param;
+                            Object result = task.getResult(waitMillisecond);
+                            resultHandle(result);
+                            if(resultList.size() == taskList.size()){
+                                //所有任务已经完成
+                                status = TaskStatus.NORMAL;
+                                collectCalculate(resultList);
                                 postHandle(resultList,null);
-                            } catch (Exception e) {
-                                throw new ThreadTaskException(e);
+                                cancel(true);
                             }
+                        }catch (Exception e){
+                            errorHandle(e,(List) param);
                         }
                     }
                 }
             };
         }
+    }
+
+    private void resultHandle(Object result){
+        try {
+            writeLock.lock();
+            if (result instanceof List){
+                resultList.addAll((List)result);
+            }else {
+                resultList.add(result);
+            }
+        } finally {
+          writeLock.unlock();
+        }
+
     }
 
 
@@ -148,8 +172,6 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
         for(AbstractThreadTask task : taskList){
             threadPoolExecutor.execute(task.getFutureTask());
         }
-        //一定要调用关闭方法
-        threadPoolExecutor.shutdown();
         return null;
     }
 
@@ -163,9 +185,12 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
 
     @Override
     public Object getResult(int millisecond) {
-
-        //同步
-        if (synResult){
+        try {
+            readLock.lock();
+            if (!synResult){
+                //异步
+                return resultList;
+            }
             Date currentDate = new Date();
             Date expirationTime = DateUtils.addMilliseconds(currentDate,millisecond);
             while (true){
@@ -176,8 +201,10 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
                     return resultList;
                 }
             }
+        }finally {
+            readLock.unlock();
         }
-        return resultList;
+
     }
 
     public Object getResult() {
@@ -192,6 +219,8 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
         } catch (Exception e) {
             status = TaskStatus.EXCEPTIONAL;
             errorHandle(e,null);
+        }finally {
+            cancel(true);
         }
     }
     @Override
@@ -203,44 +232,73 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
 
     @Override
     public void errorHandle(Exception e, List params) {
+        for (ITask task : taskList){
+            int ctaskStatus = task.getStatus();
+            //没有发现异常的任务进行回滚，发生过异常的已经回滚过了
+            if(ctaskStatus < TaskStatus.EXCEPTIONAL){
+                task.errorHandle(null,null);
+            }else {
+                task.cancel(true);
+            }
+        }
         super.errorHandle(e,params);
     }
 
     @Override
     public void cancel(boolean flag) {
-        if(status != TaskStatus.CANCELLED){
-            status = TaskStatus.CANCELLED;
-            //是否出现异常以上的级别
-            int flagStatus = 0;
-            for(ITask task : taskList){
-                int ctaskStatus = task.getStatus();
-                if(ctaskStatus >= TaskStatus.EXCEPTIONAL){
-                    flagStatus = ctaskStatus;
-                        break;
+        try {
+            //还没有关闭
+            if(status != TaskStatus.CANCELLED){
+                status = TaskStatus.CANCELLED;
+                writeLock.lock();
+                //双重检查
+                if (status != TaskStatus.CANCELLED && taskList != null){
+                    //是否出现异常以上的级别
+                    int flagStatus = 0;
+                    for(ITask task : taskList){
+                        int ctaskStatus = task.getStatus();
+                        if(ctaskStatus >= TaskStatus.EXCEPTIONAL){
+                            flagStatus = ctaskStatus;
+                            break;
+                        }
+                    }
+                    //有异常
+                    if(flagStatus >= TaskStatus.EXCEPTIONAL){
+                        errorHandle(null,null);
+                    }else {
+                        taskList.forEach(task -> task.cancel(true));
+                    }
                 }
             }
-
-            if(flagStatus >= TaskStatus.EXCEPTIONAL){
-                taskList.stream().forEach(task ->{
-                    int ctaskStatus = task.getStatus();
-                    //没有发现异常的任务进行回滚，发生过异常的已经回滚过了
-                    if(ctaskStatus < TaskStatus.EXCEPTIONAL){
-                        task.errorHandle(null,null);
-                    }
-                });
-            }else {
-                taskList.stream().forEach(task-> task.cancel(true));
-            }
+        }finally {
             taskList = null;
+            writeLock.unlock();
+            closeThreadPool();
         }
+
+    }
+
+    /**
+     * 关闭线程池
+     */
+    private void closeThreadPool(){
+        if (threadPoolExecutor != null && !threadPoolExecutor.isShutdown()){
+            //一定要调用关闭方法
+            threadPoolExecutor.shutdown();
+        }
+        threadPoolExecutor = null;
     }
 
 
     public ThreadPoolExecutor getThreadPoolExecutor(){
         if(threadPoolExecutor == null){
-            return new ThreadPoolExecutor(8, 8,
-                    0L, TimeUnit.MILLISECONDS,
-                    new LinkedBlockingQueue<Runnable>());
+            synchronized (this){
+                if (threadPoolExecutor == null){
+                    return new ThreadPoolExecutor(8, 8,
+                            0L, TimeUnit.MILLISECONDS,
+                            new LinkedBlockingQueue<Runnable>());
+                }
+            }
         }
         return threadPoolExecutor;
     }
@@ -249,4 +307,11 @@ public abstract class AbstractThreadTaskGroup extends AbstractThreadTask impleme
     public void errorCall(Exception e, List params) {
     }
 
+    public int getWaitMillisecond() {
+        return waitMillisecond;
+    }
+
+    public void setWaitMillisecond(int waitMillisecond) {
+        this.waitMillisecond = waitMillisecond;
+    }
 }

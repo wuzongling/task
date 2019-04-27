@@ -10,7 +10,7 @@ import java.util.List;
 public class ErrorTaskTest extends AbstractThreadTask{
     @Override
     public Object excute(List params) throws Exception {
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
         System.out.println(getName()+"错误任务开始执行");
         throw new RuntimeException("测试错误");
     }
